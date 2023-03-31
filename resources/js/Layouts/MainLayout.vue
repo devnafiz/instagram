@@ -13,8 +13,11 @@ import AccountOutline from 'vue-material-design-icons/AccountOutline.vue';
 import ChevronLeft from 'vue-material-design-icons/ChevronLeft.vue';
 import AccountPlusOutline from 'vue-material-design-icons/AccountPlusOutline.vue';
 
+import CreatePostOverlay from '@/Components/CreatePostOverLay.vue'
+
 import MenuItem from '@/Components/MenuItem.vue'
-let ShowCreatePost =ref(false)
+
+let showCreatePost = ref(false)
 
 </script>
 
@@ -69,12 +72,127 @@ let ShowCreatePost =ref(false)
                     <MenuItem iconString="Search" class="mb-4"/>
                     <MenuItem iconString="Explore" class="mb-4"/>
                     <MenuItem iconString="Message" class="mb-4"/>
-                    <MenuItem iconString="Notification" class="mb-4"/>
+                    <MenuItem @click="showCreatePost = true" iconString="Create" class="mb-4"/>
+                    <MenuItem iconString="Notifications" class="mb-4"/>
                     <MenuItem iconString="Profile" class="mb-4"/>
+                   
 
                 </div>
+                <Link href="/" class="absolute bottom-0 px-3 w-full">
+                      <MenuItem  iconString="Log out" class="mb-4" />
+                  </Link>  
+           </div>
+           <div class="flex lg:justify-between bg-white h-full w-[100%-200px] xl:pl-[280px] overflow-auto">
+              <div class="mx-auto md:pt-6 pt20" 
+               :class="$page.url ==='/' ?'lg:w-8/12 w-full' :'max-w-[1200px]'"
+              >
+              <main>
+                <slot/>
+              </main>
+               
+              </div>
+              <div v-if="$page.url==='/'" id="SuggestionsSection" class="lg:w-4/12 lg:block hidden text-black mt-10">
+                <Link href="/" class="flex items-center justify-between max-w-[300px]">
+                  <div class="flex items-center">
+                    <img class="rounded-full z-10 w-[58px] h-[58px]" src="https://yt3.ggpht.com/yti/AHXOFjXsIzb-vQyYb6kHey0ZrxH--n6xCUmo9hIu-qvm=s88-c-k-c0x00ffffff-no-rj-mo">
+                    <div class="pl-4">
+                      <div class="text-black font-extrabold">Name Here</div>
+                      <div class="text-gray-500 font-extrabold text-sm">Name Here</div>
+
+                    </div>
+                    <button class="text-blue-500 hover:text-gray-900 text-xs font-extrabold">
+                      Switch
+                    </button>
+                  </div>
+
+                </Link>
+                <div class="max-w-[300px] flex items-center justify-between py-3">
+                  <div class="text-gray-500 font-extrabold">Suggestion for you</div>
+                  <button class="text-blue-500 hover:text-gray-900 text-xs font-extrabold">
+                      See All
+                    </button>
+                </div>
+
+                <Link href="/" class="flex items-center justify-between max-w-[300px] pb-2">
+                  <div class="flex items-center">
+                    <img class="rounded-full z-10 w-[37px] h-[37px]" src="https://yt3.ggpht.com/yti/AHXOFjXsIzb-vQyYb6kHey0ZrxH--n6xCUmo9hIu-qvm=s88-c-k-c0x00ffffff-no-rj-mo">
+                    <div class="pl-4">
+                      <div class="text-black font-extrabold">Name Here</div>
+                      <div class="text-gray-500 font-extrabold text-sm">Name Here</div>
+
+
+                    </div>
+
+
+                  </div>
+                  <button class="text-blue-500 hover:text-gray-900 text-xs font-extrabold">
+                     Follow
+                  </button>
+
+                
+                </Link>
+                <Link href="/" class="flex items-center justify-between max-w-[300px] pb-2">
+                  <div class="flex items-center">
+                    <img class="rounded-full z-10 w-[37px] h-[37px]" src="https://yt3.ggpht.com/yti/AHXOFjXsIzb-vQyYb6kHey0ZrxH--n6xCUmo9hIu-qvm=s88-c-k-c0x00ffffff-no-rj-mo">
+                    <div class="pl-4">
+                      <div class="text-black font-extrabold">Name Here</div>
+                      <div class="text-gray-500 font-extrabold text-sm">Name Here</div>
+
+
+                    </div>
+
+
+                  </div>
+                  <button class="text-blue-500 hover:text-gray-900 text-xs font-extrabold">
+                     Follow
+                  </button>
+
+                
+                </Link>
+                <Link href="/" class="flex items-center justify-between max-w-[300px] pb-2">
+                  <div class="flex items-center">
+                    <img class="rounded-full z-10 w-[37px] h-[37px]" src="https://yt3.ggpht.com/yti/AHXOFjXsIzb-vQyYb6kHey0ZrxH--n6xCUmo9hIu-qvm=s88-c-k-c0x00ffffff-no-rj-mo">
+                    <div class="pl-4">
+                      <div class="text-black font-extrabold">Name Here</div>
+                      <div class="text-gray-500 font-extrabold text-sm">Name Here</div>
+
+
+                    </div>
+
+
+                  </div>
+                  <button class="text-blue-500 hover:text-gray-900 text-xs font-extrabold">
+                     Follow
+                  </button>
+
+                
+                </Link>
+                <div class="max-w-[300px] mt-5">
+                    <div class="text-sm text-gray-400">About Help Press API Jobs Privacy Terms Locations Language Meta Verified</div>
+                    <div class="text-left text-gray-400 mt-4">© 2023 INSTAGRAM FROM META</div>
+              </div>
+
+              </div>
+             
+           </div>
+           <div id="BottomNav" class="fixed z-30 bottom-0 w-full md:hidden flex items-center justify-around">
+            <Link href="/">
+                <HomeOutline fillColor="#000000" :size="33" class="cursor-pointer" />
+            </Link>
+            <Compass fillColor="#000000" :size="33" class="cursor-pointer" />
+            <SendOutline fillColor="#000000" :size="33" class="cursor-pointer" />
+            <Plus @click="showCreatePost = true" fillColor="#000000" :size="33" class="cursor-pointer" />
+            <AccountOutline fillColor="#000000" :size="33" class="cursor-pointer" />
+            <Link href="/">
+                <img
+                    class="rounded-full w-[30px] cursor-pointer"
+                    src=""
+                >
+            </Link>
            </div>
 
     </div>
+
+    <CreatePostOverlay v-if="showCreatePost" @close="showCreatePost = false"></CreatePostOverlay>
     
 </template>

@@ -23,7 +23,7 @@ let icon = null
 if (iconString.value === 'Home') icon = HomeOutline
 if (iconString.value === 'Search') icon = Magnify
 if (iconString.value === 'Explore') icon = Compass
-if (iconString.value === 'Messages') icon = SendOutline
+if (iconString.value === 'Message') icon = SendOutline
 if (iconString.value === 'Notifications') icon = HeartOutline
 if (iconString.value === 'Create') icon = Plus
 if (iconString.value === 'Profile') icon = AccountOutline
