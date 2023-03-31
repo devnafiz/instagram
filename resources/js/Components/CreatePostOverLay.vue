@@ -19,8 +19,14 @@
                      <label for="file" class=" hover:bg-blue-700 bg-blue-500 rounded-lg p-2.5 text-white font-extrabold" >
                         Select From Computer
                      </label>
+                     <input type="file" class="hidden"
+                      id="file"
+                      @input="getUploadedImage($event)"/>
 
-
+                      <div v-if="error && error.file" class="text-red-500 text-center p-2 font-extrabold">{{ error.file }}</div>
+                      <div v-if="!fileDisplay && isValidFile=== false" class="text-red-500 text-center p-2 font-extrabold">
+                       File not Accepted
+                     </div>
                   </div>
 
                </div>
