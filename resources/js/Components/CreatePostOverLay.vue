@@ -31,6 +31,38 @@
                   <img v-if="fileDisplay && isValidFile===true" class=" min-w-[400px] p-4 mx-auto" :src="fileDisplay">
 
                </div>
+               <div id="TextAreaSection" class=" mx-w-[720px] w-full relative">
+                  <div class="flex items-center justify-between p-3">
+                        <div class="flex items-center">
+                           <img class="rounded-full w-[38px] h-[38px]" src="https://yt3.ggpht.com/yti/AHXOFjXsIzb-vQyYb6kHey0ZrxH--n6xCUmo9hIu-qvm=s88-c-k-c0x00ffffff-no-rj-mo">
+                           <div class=" ml-4 font-extrabold">Name Here</div>
+                        </div>
+                  </div>
+                  <div v-if="error && error.text" class="text-red-500 p-2 font-extrabold" >{{ error.text }}</div>
+                  <div class="flex w-full max-h-[200px] bg-white border-b">
+
+                     <textarea ref="textarea"
+                     v-model="form.text"
+                      placeholder="continue ...."
+                      class=" placeholder-gray-500
+                                w-full
+                                border-0
+                                mt-2
+                                mb-2
+                                z-50
+                                focus:ring-0
+                                text-gray-600
+                                text-[18px]"
+                     
+                     >
+
+
+                     </textarea>
+
+                  </div>
+
+
+               </div>
 
             </div>
 
