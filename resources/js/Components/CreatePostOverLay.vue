@@ -60,6 +60,26 @@
                      </textarea>
 
                   </div>
+                  <div class="flex items-center justify-between border-b p-3">
+                     <div class="text-lg font-extrabold text-gray-500">Add Location</div>
+                     <MapMarkerOutline :size="27"/>
+
+                  </div>
+                  <div class="flex items-center justify-between border-b p-3">
+                     <div class="text-lg font-extrabold text-gray-500">Accessablility</div>
+                     <ChevronDown  :size="27"/>
+
+                  </div>
+                  <div class="flex items-center justify-between border-b p-3">
+                     <div class="text-lg font-extrabold text-gray-500">Advanced Settings</div>
+                     <ChevronDown  :size="27"/>
+
+                  </div>
+                  <div class=" text-gray-300 mt-3 p-3 text-sm">
+                     Your reel will be shared with your followers in their feeds and can be seen on your profile.
+                        It may also appear in places such as Reels, where anyone can see it.
+
+                  </div>
 
 
                </div>
@@ -116,6 +136,25 @@ const emit = defineEmits(['close'])
       },300);
 
 
+   }
+   const createPostFunc =()=>{
+
+      error.value.text=null,
+      error.value.file =null,
+      router.post('/post',form,{
+           forceFormData:null,
+           preserveScroll:null,
+
+           onError: errors=>{
+            errors && errors.text ? error.value.text =error.text :''
+             errors &&errors.file ? error.value.file = error.file :''
+
+           },
+           onSuccess: ()=>{
+            closeOverlay()
+           }
+
+      })
    }
 
    const closeOverlay = () =>{
